@@ -5,13 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Milo Grabié - Dossier de compétences</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @layer utilities {
-        .bg-navy {
-          background-color: #1a2a3a;
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#1a2a3a",
+              "light-blue": "#e6f3ff",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer components {
+        h2 {
+          @apply text-2xl font-bold mb-4 border-b border-navy pb-2 flex items-center;
         }
-        .bg-light-blue {
-          background-color: #e6f3ff;
+        h3 {
+          @apply text-xl font-bold mb-2;
+        }
+        ul {
+          @apply list-disc pl-5 mb-4;
+        }
+        section {
+          @apply bg-white p-6 rounded-lg shadow-lg mb-8 mx-4 sm:mx-8 lg:mx-16;
+        }
+        svg {
+          @apply w-6 h-6 mr-2;
+        }
+
+        .full-width-band {
+          @apply bg-navy text-white p-6 w-screen relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw];
+          border-radius: 0;
         }
       }
     </style>
@@ -33,7 +59,7 @@
 
     <div class="max-w-8xl mx-auto px-2 sm:px-2 lg:px-6">
       <!-- Contact Information -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
+      <section>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <p class="mb-2"><span class="font-bold">📞</span> 07.81.09.99.58</p>
@@ -49,10 +75,8 @@
       </section>
 
       <!-- Qualities --><!-- Qualities -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h2
-          class="text-2xl font-bold mb-4 border-b border-navy pb-2 flex items-center"
-        >
+      <section>
+        <h2>
           <svg
             class="w-6 h-6 mr-2"
             fill="none"
@@ -71,14 +95,8 @@
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="bg-light-blue p-4 rounded-lg shadow">
-            <h3 class="text-xl font-bold mb-2 flex items-center">
-              <svg
-                class="w-6 h-6 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <h3>
+              <svg>
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -88,7 +106,7 @@
               </svg>
               ORIENTÉ SOLUTION
             </h3>
-            <ul class="list-disc pl-5">
+            <ul>
               <li class="mb-2">
                 Mon mode de communication intègre une faculté naturelle à
                 proposer des solutions, à être dans la construction. J'aborde
@@ -101,14 +119,8 @@
             </ul>
           </div>
           <div class="bg-light-blue p-4 rounded-lg shadow">
-            <h3 class="text-xl font-bold mb-2 flex items-center">
-              <svg
-                class="w-6 h-6 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <h3>
+              <svg>
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -118,7 +130,7 @@
               </svg>
               PROACTIF
             </h3>
-            <ul class="list-disc pl-5">
+            <ul>
               <li class="mb-2">
                 Je veille à anticiper les problèmes potentiels avant qu'ils ne
                 surviennent. Je recherche et propose spontanément des solutions.
@@ -131,14 +143,8 @@
             </ul>
           </div>
           <div class="bg-light-blue p-4 rounded-lg shadow">
-            <h3 class="text-xl font-bold mb-2 flex items-center">
-              <svg
-                class="w-6 h-6 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <h3>
+              <svg>
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -148,7 +154,7 @@
               </svg>
               LEADERSHIP
             </h3>
-            <ul class="list-disc pl-5">
+            <ul>
               <li class="mb-2">
                 Je coordonne efficacement le travail d'équipe, assurant une
                 collaboration fluide entre tous les membres. Je sais motiver et
@@ -165,14 +171,8 @@
             </ul>
           </div>
           <div class="bg-light-blue p-4 rounded-lg shadow">
-            <h3 class="text-xl font-bold mb-2 flex items-center">
-              <svg
-                class="w-6 h-6 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <h3>
+              <svg>
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -182,7 +182,7 @@
               </svg>
               PASSION TECHNIQUE
             </h3>
-            <ul class="list-disc pl-5">
+            <ul>
               <li class="mb-2">
                 Je suis passionné par la technique. Je pratique une veille
                 constante sur les innovations du domaine et me maintient à la
@@ -195,14 +195,8 @@
             </ul>
           </div>
           <div class="bg-light-blue p-4 rounded-lg shadow">
-            <h3 class="text-xl font-bold mb-2 flex items-center">
-              <svg
-                class="w-6 h-6 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <h3>
+              <svg>
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -212,7 +206,7 @@
               </svg>
               ATTRAIT POUR L'AMÉLIORATION DES MÉTHODES
             </h3>
-            <ul class="list-disc pl-5">
+            <ul>
               <li class="mb-2">
                 Je crée régulièrement des outils pour optimiser les processus de
                 travail, augmentant ainsi l'efficacité des équipes.
@@ -225,14 +219,8 @@
             </ul>
           </div>
           <div class="bg-light-blue p-4 rounded-lg shadow">
-            <h3 class="text-xl font-bold mb-2 flex items-center">
-              <svg
-                class="w-6 h-6 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <h3>
+              <svg>
                 <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
                 <path
                   d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
@@ -246,7 +234,7 @@
               </svg>
               PÉDAGOGUE
             </h3>
-            <ul class="list-disc pl-5">
+            <ul>
               <li class="mb-2">
                 J'ai la capacité d'expliquer des concepts complexes de manière
                 claire et accessible à tous les types d'auditoire.
@@ -261,10 +249,8 @@
       </section>
 
       <!-- Education -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h2
-          class="text-2xl font-bold mb-4 border-b border-navy pb-2 flex items-center"
-        >
+      <section>
+        <h2>
           <svg
             class="w-6 h-6 mr-2"
             fill="none"
@@ -295,10 +281,21 @@
       </section>
 
       <!-- Skills -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h2 class="text-2xl font-bold mb-4 border-b border-navy pb-2 flex items-center">
-          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+            ></path>
           </svg>
           COMPÉTENCES TECHNIQUES
         </h2>
@@ -321,10 +318,8 @@
       </section>
 
       <!-- Professional Experience Summary -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h2
-          class="text-2xl font-bold mb-4 border-b border-navy pb-2 flex items-center"
-        >
+      <section>
+        <h2>
           <svg
             class="w-6 h-6 mr-2"
             fill="none"
@@ -351,10 +346,8 @@
       </section>
 
       <!-- Languages -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h2
-          class="text-2xl font-bold mb-4 border-b border-navy pb-2 flex items-center"
-        >
+      <section>
+        <h2>
           <svg
             class="w-6 h-6 mr-2"
             fill="none"
@@ -383,6 +376,1015 @@
       </section>
     </div>
 
+    <section class="bg-navy text-white p-6 w-full mt-8 full-width-band">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div>
+          <h2 class="text-4xl font-bold mb-2">CGI</h2>
+          <p class="text-xl mb-1">Analyste Développeur / Chargé de Projet</p>
+          <p class="text-lg">2021-2024 (3 ans)</p>
+        </div>
+        <div class="text-right">
+          <p class="text-lg mb-1">Secteur : Aéronautique, Bancaire</p>
+          <p class="text-lg">
+            Missions : Thales, Airbus, Safran, Crédit Agricole, Société Générale
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="h-2"></div>
+
+    <div class="max-w-8xl mx-auto px-2 sm:px-2 lg:px-6">
+      <!-- CGI Missions Overview -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path>
+          </svg>
+          MISSIONS CHEZ CGI - APERÇU
+        </h2>
+        <p class="mb-4 indent-4">
+          Au cours des trois dernières années chez CGI, j'ai évolué du poste
+          d'analyste développeur à celui de chargé de projet, dans un contexte
+          d’intégration de MS Dynamics 365. J'ai commencé par travailler avec
+          Thales, où j'ai participé à l'intégration, l'analyse des besoins et le
+          suivi des projets DIS et GROUP. J’ai ensuite travaillé Airbus DS GEO,
+          où j’ai travaillé sur le système de suivi de vente d’image satellite.
+        </p>
+        <p class="mb-4 indent-4">Actuellement, je pilote des projets pour Safran Aircraft Engine, dont
+          l’objectif principal est le suivi de la flotte des moteurs. Mon rôle
+          est d’assister le chef de projet dans la gestion d'équipe, le suivi
+          des activités, des KPI, ainsi que des outils utilisés.
+        </p>
+      </section>
+
+      <!-- Safran Mission -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+            ></path>
+          </svg>
+          MISSION SAFRAN
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Ce projet est particulièrement challengeant, comme en témoigne le
+            suivi de près de la hiérarchie de CGI. De plus, le planning est
+            complexe, avec de nombreuses taches partagées et la majorité des
+            ressources parallélisés
+          </li>
+          <li>
+            En tant que chargé de projet, j'ai été responsable du plan de
+            charge, du planning, de la gestion des capacités de l'équipe, ainsi
+            que de la gestion des risques et de l'analyse des problématiques du
+            projet.
+          </li>
+          <li>
+            J'ai travaillé à réduire les frictions entre les membres de l'équipe
+            (internes et client) et les processus/logiciels utilisés.
+          </li>
+          <li>
+            J'ai mis en place des systèmes de backup pour les tâches critiques,
+            animé les différentes réunions (daily, weekly, etc.), et assuré une
+            gestion efficace dans un environnement en cycle en V.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Réalisations</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Amélioration significative des processus internes, et des remontés
+            de KPI régulier et fiable grâce à l'automatisation avec Excel et
+            Jira.
+          </li>
+          <li>
+            Mise en place et documentation d'un processus de recette complet
+            pour la gestion des bugs, ce qui a permis une nette augmentation du
+            taux de correction des erreurs.
+          </li>
+          <li>
+            Animation de réunions régulières avec les clients pour garantir le
+            bon déroulement des projets.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Thales Mission -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+            ></path>
+          </svg>
+          MISSION THALES DIS & GROUP
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Initialement positionné en tant que développeur Microsoft Dynamics
+            365, j'ai rapidement pris des responsabilités supplémentaires en
+            participant activement à la prise de nouveaux sujets et à
+            l'accompagnement des besoins exprimés par le client.
+          </li>
+          <li>
+            J'ai joué un rôle crucial dans la stabilisation du projet à un
+            moment où la fiabilité et la confiance du client étaient remises en
+            question.
+          </li>
+          <li>
+            L’importance de ma contribution a été reconnue et récompensée par
+            une prime.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Réalisations</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Initialement positionné en tant que développeur Microsoft Dynamics
+            365, j'ai rapidement pris des responsabilités supplémentaires en
+            participant activement à la prise de nouveaux sujets et à
+            l'accompagnement des besoins exprimés par le client.
+          </li>
+          <li>
+            J'ai joué un rôle crucial dans la stabilisation du projet à un
+            moment où la fiabilité et la confiance du client étaient remises en
+            question.
+          </li>
+          <li>
+            L’importance de ma contribution a été reconnue et récompensée par
+            une prime.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Airbus Mission -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          MISSION AIRBUS DS GEO
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Initialement positionné en tant que développeur Microsoft Dynamics
+            365, j'ai rapidement pris des responsabilités supplémentaires en
+            participant activement à la prise de nouveaux sujets et à
+            l'accompagnement des besoins exprimés par le client.
+          </li>
+          <li>
+            J'ai joué un rôle crucial dans la stabilisation du projet à un
+            moment où la fiabilité et la confiance du client étaient remises en
+            question.
+          </li>
+          <li>
+            L’importance de ma contribution a été reconnue et récompensée par
+            une prime.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Réalisations</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Application d'un design pattern avancé (Abstract Factory) pour
+            moderniser et structurer le code legacy d'une application devant
+            gérer deux millions d'échanges par an. Cette intervention a permis
+            de réduire les coûts de maintenance tout en rendant le code plus
+            maintenable et évolutif, respectant les standards d'Airbus et
+            démontrant l'efficacité de l'application d'un design pattern adapté
+            à un système à haute volumétrie.
+          </li>
+          <li>
+            Résolution de bugs complexes par une analyse approfondie des
+            interactions entre divers composants et une coordination efficace
+            avec les équipes internes et celles du client.
+          </li>
+          <li>
+            Documentation des modifications et partage des bonnes pratiques avec
+            l'équipe pour garantir une compréhension commune.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Crédit Agricole & Société Générale Mission -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+            ></path>
+          </svg>
+          MISSION CRÉDIT AGRICOLE & SOCIÉTÉ GÉNÉRALE
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Livrables</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Capitalisation des processus de livraisons et amélioration des
+            procédures
+          </li>
+          <li>
+            Livraison des solutions de l’environnement de développement vers
+            celui de recette
+          </li>
+          <li>Modification des UI à partir de demande client</li>
+        </ul>
+      </section>
+
+      <!-- Formation et partage de connaissances -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+            <path
+              d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+            ></path>
+          </svg>
+          FORMATION ET PARTAGE DE CONNAISSANCES
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            J'ai formé de nouveaux arrivants chez CGI sur les bonnes pratiques
+            de développement dans l’objectif d’éviter le plus possible le code
+            redondant, et faciliter le démarrage de nouveaux développements.
+          </li>
+          <li>
+            Mon expertise est régulièrement sollicitée par des collègues tech
+            lead sur des sujets complexes.
+          </li>
+          <li>
+            J'ai instauré de nombreuses fois des réunions régulières avec les
+            clients pour assurer une communication claire et continue sur
+            l'avancement des projets.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Réalisations</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Formation de plusieurs développeurs sur les principes fondamentaux
+            ou avancés de développement tel que l’Orienté Objet, et les Design
+            Patterns.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Impact et résultats -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            ></path>
+          </svg>
+          IMPACT ET RÉSULTATS AU SEIN DE CGI
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Mes évaluations de fin de mission au sein de CGI ont été
+            systématiquement « nettement au-dessus des attentes », reflétant ma
+            contribution significative aux projets.
+          </li>
+          <li>
+            J'ai documenté et capitalisé de nombreuses procédures et outils qui
+            sont toujours utilisés aujourd'hui.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Réalisations</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Amélioration continue de la documentation et des processus, ce qui a
+            permis d'accroître la productivité et de garantir une qualité
+            constante des livrables.
+          </li>
+          <li>
+            Mise en place de standards et d'outils pour faciliter de nombreux
+            points de frictions durant la vie des projets chez CGI.
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="bg-navy text-white p-6 w-full mt-8 full-width-band">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div>
+          <h2 class="text-4xl font-bold mb-2">RH-SOLUTIONS</h2>
+          <p class="text-xl mb-1">Ingénieur Architecte & Développement</p>
+          <p class="text-lg">MARS 2019 – AUJOURD'HUI (65 mois)</p>
+        </div>
+        <div class="text-right">
+          <p class="text-lg mb-1">Secteur : Portage Salarial</p>
+          <p class="text-lg">
+            Technologies : .NET Framework, Entity Framework, WPF, Blazor,
+            ASP.NET, Azure, SQL Server
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="h-2"></div>
+    <div class="max-w-8xl mx-auto px-2 sm:px-2 lg:px-6">
+      <!-- RH-SOLUTIONS Overview -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path>
+          </svg>
+          MISSION RH-SOLUTIONS - APERÇU
+        </h2>
+        <p class="mb-4 indent-4">
+          J'assure la définition de l'architecture et le développement d'une
+          application métier pour RH-Solutions, une entreprise spécialisée dans
+          le portage salarial. Ce projet vise à optimiser le travail des
+          gestionnaires qui traitent un volume fluctuant de factures et de
+          contrats, variant selon les périodes. L'objectif principal de
+          l'application est d'automatiser au maximum les processus afin de faire
+          gagner un temps considérable aux gestionnaires.
+        </p>
+        <p class="mb-4 indent-4">
+          En collaboration avec un autre ingénieur, j'ai conçu l'architecture
+          logicielle et développé l'intégralité de l'application. Le projet
+          initial a été réalisé sous contrat, et depuis, je continue à assurer
+          la maintenance et l'évolution du système pour répondre aux besoins
+          changeants de l'entreprise.
+        </p>
+        <p class="mb-4 indent-4">
+          L'impact de ce projet est significatif, conduisant à une augmentation
+          très nette de l'efficacité de RH-Solutions en permettant aux
+          gestionnaires de traiter un volume accru de documents avec une plus
+          grande rapidité et précision.
+        </p>
+      </section>
+      <!-- Développement du client lourd et de l'infrastructure serveur -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+            ></path>
+          </svg>
+          Développement du client lourd et de l'infrastructure serveur
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Architecture et conception</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Conception d'un logiciel de gestion des contrats, des factures et de
+            suivi des paiements.
+          </li>
+          <li>
+            Élaboration d'une architecture logicielle modulaire et évolutive.
+          </li>
+          <li>
+            Définition d'une structure d'interface utilisateur intuitive avec
+            une dizaine d'écrans principaux.
+          </li>
+          <li>Conception d'une infrastructure serveur robuste et scalable.</li>
+          <li>
+            Planification de fonctionnalités pour la manipulation de divers
+            formats de documents.
+          </li>
+          <li>
+            Élaboration d'une stratégie d'automatisation pour pallier l'absence
+            d'API avec des systèmes tiers.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Réalisation</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Développement de l'interface utilisateur en utilisant le pattern
+            MVVM avec WPF.
+          </li>
+          <li>
+            Mise en place de l'infrastructure serveur sur Azure, incluant le
+            back-end en ASP.NET, Entity Framework, et SQL Server.
+          </li>
+          <li>
+            Implémentation de fonctionnalités pour la lecture et l'écriture de
+            documents (PDF, DOC, DOCX).
+          </li>
+          <li>
+            Développement d'une solution RPA (Robotic Process Automation)
+            utilisant du web scraping avec Selenium pour l'interaction avec les
+            systèmes tiers.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Livrables</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>Application complète avec interface utilisateur en WPF.</li>
+          <li>Infrastructure serveur déployée sur Azure.</li>
+          <li>Base de données Microsoft SQL Server en production.</li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Volumétrie</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>37 000 lignes de code.</li>
+          <li>10 écrans développés.</li>
+          <li>Projet de 30 k€.</li>
+        </ul>
+      </section>
+      <!-- Maintenance et amélioration continue -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+            ></path>
+          </svg>
+          Maintenance et amélioration continue
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description des tâches</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Interview des utilisateurs pour la définition précise des besoins.
+          </li>
+          <li>
+            Analyse et conception ergonomique pour améliorer l'expérience
+            utilisateur.
+          </li>
+          <li>
+            Animation des revues de présentation pour valider les évolutions
+            avec les parties prenantes.
+          </li>
+          <li>Suivi et priorisation des demandes d'évolutions.</li>
+          <li>Maintenance évolutive et corrective du logiciel.</li>
+          <li>
+            Optimisation des performances et amélioration des fonctionnalités
+            existantes.
+          </li>
+          <li>
+            Gestion des mises à jour régulières en réponse aux besoins des
+            utilisateurs.
+          </li>
+          <li>Support technique pour les utilisateurs finaux.</li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Livrables</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Lots d'évolutions du logiciel avec les nouvelles fonctionnalités.
+          </li>
+          <li>Documentation des modifications.</li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Volumétrie</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Lots d'évolutifs déployés régulièrement (au moins une fois par
+            trimestre).
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="bg-navy text-white p-6 w-full mt-8 full-width-band">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div>
+          <h2 class="text-4xl font-bold mb-2">YUME</h2>
+          <p class="text-xl mb-1">Expert IA LLM</p>
+          <p class="text-lg">OCTOBRE 2019 – AUJOURD'HUI (10 mois)</p>
+        </div>
+        <div class="text-right">
+          <p class="text-lg mb-1">Secteur : Intelligence Artificielle</p>
+          <p class="text-lg">
+            Technologies : IA LLM, GPT, Claude, Gemini, Copilot, Llama – RAG,
+            Multi Agent, Fine-tuning…
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="h-2"></div>
+
+    <div class="max-w-8xl mx-auto px-2 sm:px-2 lg:px-6">
+      <!-- YUME Overview -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path>
+          </svg>
+          MISSION YUME - APERÇU
+        </h2>
+        <p class="mb-4 indent-4">
+          Passionné par l'IA, j'ai développé une expertise approfondie dans les
+          modèles de langage (LLM). Je dispense des formations sur Microsoft
+          Copilot, permettant à des dizaines de professionnels d'optimiser leur
+          productivité. Mon parcours inclut également le développement de
+          prototypes LLM pour l'automatisation et la réalisation d'études de
+          faisabilité et d'opportunité pour l'intégration des LLM dans divers
+          secteurs.
+        </p>
+        <p class="mb-4 indent-4">
+          Ma veille technologique constante et mes tests pratiques des LLM m'ont
+          permis d'acquérir une compréhension fine de leurs applications. Cette
+          expertise a été reconnue par de grandes entreprises, notamment dans le
+          secteur de la santé, pour lesquelles j'ai fourni des conseils
+          stratégiques sur l'utilisation des LLM.
+        </p>
+      </section>
+
+      <!-- Formation à l'utilisation de Microsoft Copilot -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            ></path>
+          </svg>
+          Formation à l'utilisation de Microsoft Copilot
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description des tâches</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Formation de 70 personnes sur l'utilisation de Microsoft Copilot
+            pour l'amélioration de la productivité bureautique.
+          </li>
+          <li>
+            Démonstration des capacités de Copilot pour accélérer les processus,
+            transformer les données, et améliorer la recherche d'informations.
+          </li>
+          <li>
+            Explication des fonctionnalités spécifiques de Copilot incluses dans
+            la licence Office 365.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Livrables</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>Sessions de formation en groupe.</li>
+          <li>
+            Réalisation d'un support de formation pédagogique pour l'utilisation
+            de Copilot.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Développement d'un prototype -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+            ></path>
+          </svg>
+          Développement d'un prototype pour la lecture automatique des documents
+          de convention de stage / alternance
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description des tâches</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Création d'un prototype utilisant un modèle de langage (LLM) combiné
+            à un modèle de vision pour la lecture automatique de documents de
+            convention de stage et d'alternance.
+          </li>
+          <li>
+            Développement d'une solution capable de traiter des documents très
+            variés (écrits à la main, formats non standardisés, variations de
+            mise en page).
+          </li>
+          <li>
+            Validation de l'efficacité du prototype pour extraire les
+            informations clés malgré la variété des documents.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Livrables</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Prototype fonctionnel pour la lecture automatique des documents.
+          </li>
+          <li>
+            Rapport d'efficacité et recommandations pour de futures extensions.
+          </li>
+          <li>Prototype complet démontré et testé avec des données réelles.</li>
+        </ul>
+      </section>
+
+      <!-- Étude de marché -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            ></path>
+          </svg>
+          Étude de marché pour l'utilisation de LLM dans les logiciels de
+          formation
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description des tâches</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Réalisation d'une étude de marché sur l'intégration des LLM dans des
+            logiciels de formation pour un CHU dans une grande ville.
+          </li>
+          <li>
+            Proposition de solutions pour personnaliser les parcours de
+            formation en fonction des profils utilisateurs.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Livrables</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Recommandations pour l'intégration des LLM dans les logiciels de
+            formation.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Veille technologique -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+          Veille technologique et tests des LLM
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Description des tâches</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Analyse des différents LLM disponibles sur le marché (GPT, Copilot,
+            Gemini, Claude, etc.).
+          </li>
+          <li>
+            Tests pratiques de ces modèles dans divers cas d'usage : traitement
+            d'image, assistant de développement, projets multi-agents, etc.
+          </li>
+          <li>
+            Documentation des résultats et identification des cas d'utilisation
+            les plus efficaces pour chaque modèle.
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- PROJETS SCOLAIRES / PROJETS PERSONNELS -->
+    <section class="bg-navy text-white p-6 w-full mt-8 full-width-band">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div>
+          <h2 class="text-4xl font-bold mb-2">
+            PROJETS SCOLAIRES / PROJETS PERSONNELS
+          </h2>
+        </div>
+      </div>
+    </section>
+    <div class="h-2"></div>
+
+    <div class="max-w-8xl mx-auto px-2 sm:px-2 lg:px-6">
+      <!-- Projet WEBCAND - CNAM IPST -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+            ></path>
+          </svg>
+          Projet WEBCAND - CNAM IPST
+        </h2>
+        <p class="mb-4 indent-4">
+          Contexte : Développement d'une application web de gestion des
+          candidatures pour l'IPST-CNAM (Institut de Promotion Supérieure du
+          Travail - Conservatoire National des Arts et Métiers). Le projet
+          visait à faciliter et optimiser le processus de candidature pour les
+          étudiants et le suivi pour l'administration.
+        </p>
+        <h3 class="text-xl font-bold mb-2">Description des tâches</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Participation au développement d'une application web de gestion des
+            candidatures pour l'IPST-CNAM
+          </li>
+          <li>Travail en équipe suivant la méthodologie Agile SCRUM</li>
+          <li>
+            Développement du backend avec NestJS, TypeScript et une base de
+            données Oracle
+          </li>
+          <li>
+            Création et implémentation d'un moteur de génération dynamique
+            d'endpoints API REST à partir des classes TypeScript, accélérant
+            considérablement le développement du backend
+          </li>
+          <li>
+            Création d'APIs RESTful et implémentation de l'authentification JWT
+          </li>
+          <li>Développement du frontend avec React et TypeScript</li>
+          <li>
+            Mise en place de l'intégration continue (CI) et du déploiement
+            continu (CD) avec GitLab
+          </li>
+          <li>
+            Utilisation de Docker pour la conteneurisation de l'application
+          </li>
+          <li>
+            Participation à la modélisation de la base de données et à la
+            création des diagrammes UML
+          </li>
+          <li>
+            Implémentation de bonnes pratiques de développement (ESLint,
+            Prettier)
+          </li>
+          <li>Réalisation de tests unitaires et d'intégration</li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Livrables</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>Application web partiel de gestion des candidatures</li>
+          <li>API RESTful documentée avec Swagger</li>
+          <li>Moteur de génération dynamique d'endpoints API</li>
+          <li>Scripts de déploiement et configuration Docker</li>
+          <li>Documentation technique et guides d'utilisation</li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Volumétrie</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>Durée du projet : 12 mois (2021-2022)</li>
+          <li>Taille de l'équipe : 14 développeurs</li>
+          <li>Nombre d'endpoints API : environ 15-20</li>
+        </ul>
+      </section>
+
+      <!-- Développement de robots contrôlés par Python dans Scrap Mechanic -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"
+            ></path>
+          </svg>
+          Développement de robots contrôlés par Python dans Scrap Mechanic
+        </h2>
+        <p class="mb-4 indent-4">
+          Contexte : Dans le cadre de mes projets personnels, j'ai développé un
+          ensemble de robots complexes dans le jeu Scrap Mechanic, contrôlés via
+          des scripts Python. Ce projet a permis d'explorer des concepts avancés
+          de robotique, tels que la cinématique inverse, et de les appliquer à
+          divers types de robots, notamment des robots quadrupèdes et des
+          drones.
+        </p>
+        <h3 class="text-xl font-bold mb-2">Détails du projet</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Type de robots développés :
+            <ul class="list-disc pl-5 mb-2">
+              <li>
+                Robots quadrupèdes : Création de robots à quatre pattes capables
+                de se déplacer de manière stable en utilisant des algorithmes de
+                marche basés sur la cinématique inverse.
+              </li>
+              <li>
+                Drones : Développement de drones avec des capacités de vol
+                contrôlées par des scripts Python, incluant la stabilisation
+                automatique et la navigation.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Technologies utilisées :
+            <ul class="list-disc pl-5 mb-2">
+              <li>
+                Python : Utilisé pour écrire des scripts de contrôle des
+                mouvements et des comportements des robots.
+              </li>
+              <li>
+                Cinématique inverse : Implémentation d'algorithmes permettant de
+                calculer les mouvements des articulations des robots en fonction
+                des positions cibles.
+              </li>
+              <li>
+                Scrap Mechanic : Environnement utilisé pour tester et affiner
+                les comportements des robots dans un monde virtuel.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Objectifs :
+            <ul class="list-disc pl-5 mb-2">
+              <li>
+                Expérimentation avec des concepts avancés de robotique dans un
+                cadre ludique.
+              </li>
+              <li>
+                Amélioration des compétences en programmation Python appliquée à
+                la robotique.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Livrables</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Ensemble de scripts Python contrôlant les différents types de
+            robots.
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Volumétrie</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>
+            Développement de plusieurs prototypes de robots (quadrupèdes,
+            drones).
+          </li>
+          <li>
+            Des dizaines d'heures de tests et d'ajustements pour optimiser les
+            mouvements et les comportements.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Autres compétences diverses -->
+      <section>
+        <h2>
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+            ></path>
+          </svg>
+          Autres compétences diverses
+        </h2>
+        <h3 class="text-xl font-bold mb-2">Électroniques</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>Domotiques</li>
+          <li>Asservissement</li>
+          <li>Vision</li>
+          <li>Autres systèmes électroniques</li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">CAO</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>Design de pièces via SolidWorks</li>
+          <li>Simulation de fluide</li>
+          <li>Impression 3D</li>
+        </ul>
+        <h3 class="text-xl font-bold mb-2">Mécanique</h3>
+        <ul class="list-disc pl-5 mb-4">
+          <li>Réparation et maintenance</li>
+        </ul>
+      </section>
+    </div>
+
     <footer class="bg-navy py-4 mt-8">
       <div class="max-w-7xl mx-auto flex justify-center space-x-4">
         <a
@@ -407,7 +1409,7 @@
           LinkedIn
         </a>
         <a
-          href="dossier-competences.html"
+          href="index.html"
           class="flex items-center px-4 py-2 bg-white text-navy rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
         >
           <svg
@@ -417,10 +1419,12 @@
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-            ></path>
+              fill-rule="evenodd"
+              d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+              clip-rule="evenodd"
+            />
           </svg>
-          Dossier de compétences
+          CV
         </a>
       </div>
     </footer>
