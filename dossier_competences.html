@@ -39,6 +39,41 @@
           @apply bg-navy text-white p-6 w-screen relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw];
           border-radius: 0;
         }
+
+        
+        .full-width-band {
+          @apply bg-navy text-white p-6 w-screen relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw];
+          border-radius: 0;
+        }
+
+        /* Nouveaux styles dynamiques */
+        .full-width-band > div {
+          @apply flex flex-col sm:flex-row justify-between items-start sm:items-center;
+        }
+
+        .full-width-band > div > div:first-child {
+          @apply w-full sm:w-auto;
+        }
+
+        .full-width-band > div > div:first-child > h2 {
+          @apply text-2xl sm:text-4xl font-bold mb-2 border-none;
+        }
+
+        .full-width-band > div > div:first-child > p:first-of-type {
+          @apply text-lg sm:text-xl mb-1;
+        }
+
+        .full-width-band > div > div:first-child > p:last-of-type {
+          @apply text-base sm:text-lg;
+        }
+
+        .full-width-band > div > div:last-child {
+          @apply mt-4 sm:mt-0 sm:text-right;
+        }
+
+        .full-width-band > div > div:last-child > p {
+          @apply text-base sm:text-lg;
+        }
       }
     </style>
   </head>
