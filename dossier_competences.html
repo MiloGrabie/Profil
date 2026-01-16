@@ -305,13 +305,13 @@
                     <span class="font-bold">FRAMEWORKS & OUTILS IA :</span> LangChain, LlamaIndex, Hugging Face, Chroma DB (vector database), RAG (Retrieval-Augmented Generation), Agents IA, Prompt Engineering avance
                 </li>
                 <li class="mb-2">
-                    <span class="font-bold">ARCHITECTURE & INFRASTRUCTURE :</span> Kafka Streams (event-driven architecture), Docker, Kubernetes (concepts), MongoDB, PostgreSQL, Minio, OpenTelemetry, ClickHouse (observabilite), Architecture microservices, API REST
+                    <span class="font-bold">ARCHITECTURE & INFRASTRUCTURE :</span> Kafka Streams (event-driven architecture), Kafka avec ZooKeeper, Docker, Docker Compose, Kubernetes (concepts), MongoDB, PostgreSQL, Minio, OpenTelemetry, ClickHouse (observabilite), Architecture microservices, API REST
                 </li>
                 <li class="mb-2">
-                    <span class="font-bold">MÉTHODOLOGIE PROJET :</span> Jira, Git, Azure DevOps, Pilotage par les KPI, Gestion d'equipe (mentorat, formation), Analyse fonctionnelle et technique
+                    <span class="font-bold">MÉTHODOLOGIE PROJET :</span> Jira, Git, Azure DevOps, GitLab CI, Pilotage par les KPI, Gestion d'equipe (mentorat, formation), Analyse fonctionnelle et technique
                 </li>
                 <li class="mb-2">
-                    <span class="font-bold">OUTILS :</span> Jira, GitLab, GitHub, Office, IA LLM (GPT, Claude, Copilot), Azure, Docker, IDE / DB Editor, Postman, SSMS, PyCharm, IntelliJ, Visual Studio, SublimeText, RPA (UIPath, Selenium), PyQt6
+                    <span class="font-bold">OUTILS :</span> Jira, Jira Confluence, GitLab, GitLab CI, GitHub, Office, IA LLM (GPT, Claude, Copilot), Azure, Docker, IDE / DB Editor, Postman, SSMS, PyCharm, IntelliJ, Visual Studio, SublimeText, RPA (UIPath, Selenium), PyQt6, SonarQube
                 </li>
             </ul>
         </section>
@@ -439,22 +439,26 @@
             <p class="mb-2"><strong>Role :</strong> Architecte logiciel, Analyste fonctionnel, Developpeur lead (equipe de 2 personnes)</p>
             <h3 class="text-xl font-bold mb-2">Contexte & Besoin metier</h3>
             <p class="mb-4 indent-4">
-                Entreprise d'assurance recevant des milliers d'emails de particuliers et professionnels necessitant une integration manuelle dans leur logiciel metier. Processus chronophage et couteux en ressources humaines. Objectif : automatiser le traitement pour reduire les couts operationnels lies a la main-d'oeuvre.
+                Entreprise d'assurance recevant des milliers d'emails de particuliers et professionnels necessitant une integration manuelle dans leur logiciel metier. Le processus etait 100% manuel, gere par une dizaine de personnes. Processus chronophage et couteux en ressources humaines. Objectif : automatiser le traitement pour reduire les couts operationnels lies a la main-d'oeuvre.
             </p>
             <h3 class="text-xl font-bold mb-2">Problematiques techniques</h3>
             <ul class="list-disc pl-5 mb-4">
                 <li>Identification automatique du dossier de rattachement de chaque email</li>
-                <li>Classification des types d'emails et de pieces jointes</li>
+                <li>Classification des types d'emails et de pieces jointes (cartes grises, photos, constats, devis, dossiers de sinistres)</li>
                 <li>Traitement fiable et tracable de grands volumes</li>
+                <li>Gestion des cas d'echec de classification avec un arbre de decision complet : en cas d'echec (sous le seuil de confiance), les documents sont isoles dans un dossier et une notification email est envoyee a un humain pour validation et annotation manuelle</li>
             </ul>
             <h3 class="text-xl font-bold mb-2">Architecture technique mise en place</h3>
             <ul class="list-disc pl-5 mb-4">
-                <li><strong>Event Streaming :</strong> Kafka Streams pour l'ingestion et le routage des messages</li>
-                <li><strong>Workers Python :</strong> Traitement asynchrone distribue avec architecture modulaire</li>
-                <li><strong>IA :</strong> Modeles open source heberges en France pour la classification et l'extraction d'informations</li>
+                <li><strong>Event Streaming :</strong> Kafka avec ZooKeeper pour l'ingestion et le routage des messages. Outil de visualisation personnalise developpe pour monitorer les flux</li>
+                <li><strong>Workers Python :</strong> Architecture modulaire basee sur un heritage de "workers" lies a des tuyaux Kafka, avec un "worker manager" centralisant les logs et la persistance. L'accent a ete mis sur les interfaces (Kafka, MinIO, couche de donnees) pour rester agnostique aux technologies utilisees</li>
+                <li><strong>IA :</strong> Modeles LLM open source. Utilisation uniquement de prompting sur les donnees de test avec un "system prompt" bien structure, ce qui s'est avere suffisant sans fine-tuning</li>
+                <li><strong>Connecteurs ERP :</strong> Developpement de connecteurs vers le logiciel metier existant. Faute d'API ou d'acces base de donnees, l'interface a ete realisee via un outil Python (type RPA) simulant des clics et remplissant des champs de maniere fiable sur une machine virtuelle</li>
                 <li><strong>API REST :</strong> Serveur d'API commun en librairie Python partagee</li>
                 <li><strong>Monitoring :</strong> Application PyQt6 pour le suivi temps reel, OpenTelemetry + ClickHouse pour les logs</li>
                 <li><strong>Stockage :</strong> MongoDB pour l'archivage Kafka, base relationnelle (ORM) pour les donnees persistantes, Minio pour les fichiers</li>
+                <li><strong>Tests :</strong> Tests d'integration mis en place pour verifier le bon demarrage des services (Docker) et la connexion aux modules. Pas de tests unitaires</li>
+                <li><strong>Deploiement :</strong> Via Docker Compose</li>
                 <li><strong>Principes :</strong> Architecture orientee objet, haute modularite, couplage faible et cohesion forte</li>
             </ul>
             <h3 class="text-xl font-bold mb-2">Objectifs & KPI vises</h3>
@@ -580,7 +584,7 @@
             <p class="mb-2"><strong>Role :</strong> Charge de projet, Assistant chef de projet</p>
             <h3 class="text-xl font-bold mb-2">Contexte & Besoin metier</h3>
             <p class="mb-4 indent-4">
-                Suivi precis des clients, des operations de maintenance des moteurs d'avion et gestion de la flotte via un CRM MS Dynamics 365. Enjeu critique pour la tracabilite et la planification des operations de maintenance aeronautique.
+                Migration d'un ancien CRM vers un nouveau suite a la fin d'un contrat de maintenance. Les enjeux de conformite reglementaire et d'optimisation des workflows etaient prioritaires. Suivi precis des clients, des operations de maintenance des moteurs d'avion et gestion de la flotte via un CRM MS Dynamics 365. Enjeu critique pour la tracabilite et la planification des operations de maintenance aeronautique.
             </p>
             <h3 class="text-xl font-bold mb-2">Responsabilites</h3>
             <ul class="list-disc pl-5 mb-4">
@@ -598,7 +602,8 @@
             <h3 class="text-xl font-bold mb-2">Realisations</h3>
             <ul class="list-disc pl-5 mb-4">
                 <li>Amelioration significative des processus internes, et des remontees de KPI regulier et fiable grace a l'automatisation avec Excel et Jira</li>
-                <li>Mise en place et documentation d'un processus de recette complet pour la gestion des bugs, ce qui a permis une nette augmentation du taux de correction des erreurs</li>
+                <li><strong>Automatisations Excel/Jira :</strong> Utilisation de Power Query pour interfacer les donnees Jira et Excel, completee par des macros VBA. Creation d'un Excel specifique nomme "Styx", permettant l'importation automatique dans Jira de documents exportes depuis les outils clients (suivi de besoins, tests)</li>
+                <li>Mise en place et documentation d'un processus de recette complet pour la gestion des bugs : mise en place d'un workflow Jira rigoureux, accompagne de formations et de supports visuels (PowerPoint) pour expliquer le cycle de vie des tickets et assurer qu'aucun bug ne reste sans visibilite. Ceci a permis une nette augmentation du taux de correction des erreurs</li>
                 <li>Animation de reunions regulieres avec les clients pour garantir le bon deroulement des projets</li>
                 <li>Reduction des frictions entre les membres de l'equipe (internes et client) et les processus/logiciels utilises</li>
                 <li>Mise en place de systemes de backup pour les taches critiques</li>
@@ -624,6 +629,10 @@
             <p class="mb-4 indent-4">
                 Mise en place de MS Dynamics 365 CRM pour la gestion des ventes de cartes electroniques. Creation d'une plateforme d'aide au service commercial avec suivi des clients, des opportunites et des commandes.
             </p>
+            <h3 class="text-xl font-bold mb-2">Modules Dynamics 365 implementes</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Les modules Sales et Customer Service</li>
+            </ul>
             <h3 class="text-xl font-bold mb-2">Responsabilites</h3>
             <ul class="list-disc pl-5 mb-4">
                 <li>Developpement sur MS Dynamics 365 (.NET, C#)</li>
@@ -636,6 +645,9 @@
             <h3 class="text-xl font-bold mb-2">Realisations</h3>
             <ul class="list-disc pl-5 mb-4">
                 <li>Stabilisation du projet en periode critique, assurant la continuite et la satisfaction du client</li>
+                <li><strong>Design patterns appliques :</strong> Notamment l'Abstract Factory</li>
+                <li><strong>Formation des juniors :</strong> Accompagnement via des supports (diaporamas) et du pair programming pour enseigner les raccourcis et les methodes de developpement efficaces</li>
+                <li><strong>Standards de code instaures :</strong> Focus sur la reutilisabilite et l'interdiction de la duplication de code. Mise en place systematique de couches de services ou de managers</li>
                 <li>Contribution proactive a la prise de decisions strategiques</li>
                 <li>Documentation et structuration des processus de travail pour ameliorer la communication et la fiabilite des livrables</li>
                 <li>L'importance de ma contribution a ete reconnue et recompensee par une prime</li>
@@ -678,8 +690,13 @@
             </ul>
             <h3 class="text-xl font-bold mb-2">Realisations</h3>
             <ul class="list-disc pl-5 mb-4">
-                <li>Application d'un design pattern avance (Abstract Factory) pour moderniser et structurer le code legacy d'une application devant gerer deux millions d'echanges par an. Cette intervention a permis de reduire les couts de maintenance tout en rendant le code plus maintenable et evolutif, respectant les standards d'Airbus et demontrant l'efficacite de l'application d'un design pattern adapte a un systeme a haute volumetrie.</li>
+                <li><strong>Abstract Factory mise en place :</strong> Le moteur traite des emails arrivant sous format XML, transformes en objets C#. Une Abstract Factory gere une arborescence d'objets (environ 20 objets, dont une quinzaine de types de mails) heritant d'une base commune. Chaque objet possede sa propre logique de validation et d'execution des regles metiers pour modifier les records du CRM. Application d'un design pattern avance pour moderniser et structurer le code legacy d'une application devant gerer deux millions d'echanges par an. Cette intervention a permis de reduire les couts de maintenance tout en rendant le code plus maintenable et evolutif, respectant les standards d'Airbus et demontrant l'efficacite de l'application d'un design pattern adapte a un systeme a haute volumetrie.</li>
+                <li><strong>Developpement de plugins et workflows Dynamics 365 :</strong> Developpement intensif de plugins et workflows Dynamics 365 en C# (missions Airbus et Thales)</li>
+                <li><strong>Interfaces avec l'ecosysteme Airbus :</strong> Principalement des flux via boites emails et RabbitMQ. Quelques interfaces REST etaient egalement presentes</li>
+                <li><strong>Rapports Power BI :</strong> Developpement de rapports sur le flux de traitement des mails par categorie et par volume temporel</li>
                 <li>Resolution de bugs complexes par une analyse approfondie des interactions entre divers composants et une coordination efficace avec les equipes internes et celles du client.</li>
+                <li><strong>Documentation de l'architecture :</strong> Via Jira Confluence avec des diagrammes de structure et l'explication des design patterns utilises</li>
+                <li><strong>Processus de revue de code :</strong> Revues de code ponctuelles et validation systematique des commits par le Tech Lead</li>
                 <li>Documentation des modifications et partage des bonnes pratiques avec l'equipe pour garantir une comprehension commune.</li>
             </ul>
             <p class="mb-4"><strong>Technologies :</strong> MS Dynamics 365, .NET, Postman, Power BI, Excel, RedHat, Active Directory, SQL Server</p>
@@ -809,7 +826,7 @@
             </h2>
             <h3 class="text-xl font-bold mb-2">Contexte & Besoin metier</h3>
             <p class="mb-4 indent-4">
-                Application metier pour optimiser le travail des gestionnaires traitant un volume fluctuant de factures et contrats (5 000 a 10 000 contrats/an). Besoin d'automatisation maximale pour reduire la charge de travail et ameliorer la precision.
+                Application metier pour optimiser le travail des gestionnaires traitant un volume fluctuant de factures et contrats (5 000 a 10 000 contrats/an). Environ trois gestionnaires travaillaient manuellement avec des fichiers Excel et Word. Les principaux points de douleur etaient essentiellement le temps de traitement : la navigation complexe dans les dossiers, les multiples clics pour creer un contrat et la recherche manuelle de clauses. Besoin d'automatisation maximale pour reduire la charge de travail et ameliorer la precision.
             </p>
             <p class="mb-2"><strong>Role :</strong> Architecte logiciel, Developpeur lead (en binome)</p>
             <h3 class="text-xl font-bold mb-2">Realisation</h3>
@@ -820,10 +837,11 @@
             </ul>
             <h3 class="text-xl font-bold mb-2">Fonctionnalites automatisees</h3>
             <ul class="list-disc pl-5 mb-4">
-                <li>Recuperation et lecture automatique des bons de commande et de validation</li>
+                <li><strong>Lecture automatique des bons de commande :</strong> Le processus combine du web scraping pour la recuperation et de l'OCR pour extraire le texte de zones specifiques (boites) dans les images PDF</li>
                 <li>Formulaire en ligne pour les sous-traitants</li>
-                <li>Production automatisee de contrats selon les donnees recoltees</li>
+                <li><strong>Production automatisee de contrats :</strong> Generation automatique de types de contrats classiques selon les donnees recoltees. Systeme de templates de documents via des documents Word avec des balises s'interfaçant avec .NET. Le versionning est gere manuellement par les utilisateurs selon une documentation fournie</li>
                 <li>Workflows de validation et de traitement</li>
+                <li><strong>Communication avec systemes tiers :</strong> Melange d'API officielles (via le back-end des sites) et de Selenium pour certains services sans API</li>
             </ul>
             <h3 class="text-xl font-bold mb-2">Utilisateurs</h3>
             <p class="mb-4">2 a 3 gestionnaires</p>
@@ -853,7 +871,7 @@
                     Conception d'un logiciel de gestion des contrats, des factures et de suivi des paiements.
                 </li>
                 <li>
-                    Élaboration d'une architecture logicielle modulaire et évolutive.
+                    <strong>Architecture WPF :</strong> MVVM strict avec injection de dependances, architecture modulaire et separation nette de la couche d'acces aux donnees (DAL)
                 </li>
                 <li>
                     Définition d'une structure d'interface utilisateur intuitive avec une dizaine d'écrans principaux.
@@ -865,14 +883,17 @@
                 <li>
                     Élaboration d'une stratégie d'automatisation pour pallier l'absence d'API avec des systèmes tiers.
                 </li>
+                <li>
+                    <strong>Gestion des migrations de base de donnees :</strong> Principalement via des migrations Entity Framework et une gestion multi-environnements (dev, pre-prod)
+                </li>
             </ul>
             <h3 class="text-xl font-bold mb-2">Réalisation</h3>
             <ul class="list-disc pl-5 mb-4">
                 <li>
-                    Développement de l'interface utilisateur en utilisant le pattern MVVM avec WPF.
+                    Développement de l'interface utilisateur en utilisant le pattern MVVM strict avec WPF, injection de dependances et architecture modulaire.
                 </li>
                 <li>
-                    Mise en place de l'infrastructure serveur sur Azure, incluant le back-end en ASP.NET, Entity Framework, et SQL Server.
+                    Mise en place de l'infrastructure serveur sur Azure (App Service, VM et Azure SQL), incluant le back-end en ASP.NET, Entity Framework, et SQL Server.
                 </li>
                 <li>
                     Implémentation de fonctionnalités pour la lecture et l'écriture de documents (PDF, DOC, DOCX).
@@ -984,7 +1005,7 @@
                     Développement du backend avec NestJS, TypeScript et une base de données Oracle
                 </li>
                 <li>
-                    Création et implémentation d'un moteur de génération dynamique d'endpoints API REST à partir des classes TypeScript, accélérant considérablement le développement du backend
+                    Création et implémentation d'un moteur de génération dynamique d'endpoints API REST à partir des classes TypeScript : moteur de génération dynamique de CRUD basé sur l'introspection des objets de la couche de persistance pour ouvrir automatiquement des API REST pour chaque objet. Ce moteur a permis d'economiser environ une semaine de travail pour l'equipe
                 </li>
                 <li>
                     Création d'APIs RESTful et implémentation de l'authentification JWT
@@ -1002,7 +1023,7 @@
                 <li>
                     Implémentation de bonnes pratiques de développement (ESLint, Prettier)
                 </li>
-                <li>Réalisation de tests unitaires et d'intégration</li>
+                <li>Réalisation de tests unitaires et d'intégration (couverture de tests d'environ 20% a 30%)</li>
             </ul>
             <h3 class="text-xl font-bold mb-2">Livrables</h3>
             <ul class="list-disc pl-5 mb-4">
